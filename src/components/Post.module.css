@@ -105,7 +105,7 @@ authorInfo span {
     transition: background-color 0.1s;
 }
 
-.commentForm button[type=submit]:not(:disabled):hover {
+.commentForm button[type=submit]:not(:disabled):hover {    /* Este hover só vai funcionar caso o botão não esteja disabled   */
     background: var(--green-300);
 }
 
@@ -113,6 +113,8 @@ authorInfo span {
     opacity: 0.3;
     cursor: not-allowed;
 }
+
+
 
 .commentList {
     margin-top: 2rem;
