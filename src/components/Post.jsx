@@ -32,6 +32,13 @@ export function Post({author, publishedAt, content}){
         setNewCommentText(event.target.value)
     }
 
+    function deleteComment(commentToDelete){
+        const commentsWhitoutDeletedOne = comments.filter(comment => {    // Esse método do js(filter) retorna a lista de comentários filtrando todos menos o que excluimos
+            return comment !== commentToDelete;
+        })
+        setComments(commentsWhitoutDeletedOne);  // Esse método atualiza a lista de comentários 
+    }
+
     return(
         <article className={styles.post}>
             <header>
@@ -73,8 +80,14 @@ export function Post({author, publishedAt, content}){
             </form>
 
             <div className={styles.commentList}>
-                {comments.map(comments => {
-                    return <Comment key={comments} content={comments}/>
+                {comments.map(comments => {       // Esta função map percorre toda a lista de comentários e retorna algo
+                    return (
+                      <Comment
+                        key={comments}
+                        content={comments}
+                        onDeleteComment={deleteComment}  // Função sendo passada como propriedade para ser usada em outro componente (Comment.jsx) 
+                        />
+                    )
                 })}
             </div>
         </article>
